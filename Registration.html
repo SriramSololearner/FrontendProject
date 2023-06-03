@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="./images/adobe.png" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Adobe ID</title>
+
+    
+</head>
+<body onload="document.form1.text1.focus()">
+    <div class="main">
+        <video autoplay muted loop id="myVideo" onclick="fun()">
+            <source src="./images/galaxy.mp4" type="video/mp4" id="source">
+        </video>
+        <div class="Cont"> 
+            <div class="left">
+                <div><img src="./images/adobe-illustrator.png"> <p style="color: black;">Adobe</p></div>
+                <div class="Content">Sign in or create an account</div>
+            </div>
+
+            <div class="regist login">
+                <h1>Create an account</h1>
+                <div class="Round-Btn">
+                    <div class="Buttons">
+                        <img src="./images/google.png" alt="google" />
+                        
+                    </div>
+                    <div class="Buttons">
+                        <img src="./images/facebook (1).png" alt="facebook" />
+                        
+                    </div>
+                    <div class="Buttons">
+                        <img src="./images/apple-logo.png" alt="Apple" />
+                    </div>
+                </div>
+                
+                
+                <span style="font-size: 20px;">Or</span>
+
+                <div class="div-cont"><h5 style="color:rgb(77, 76, 76);font-size: 18px;">Sign up with email</h5> <h5>Already have an account? <a href="Login.html">Sign in</a></h5></div>
+                <form name="form1" onsubmit="valid(event)">
+                    <div class="email" >
+                        <label>Email address</label><br>
+                        <input type="text" name="text1" onchange="ValidateEmail(document.form1.text1)">
+                        <p style="color: red; font-size: 13px; display: block;" id="ptag">**Pls Enter Email Addres!</p>
+                    </div>
+                    <div class="email"  style="margin-top: -20px;">
+                        <label>Name</label><br>
+                        <input type="text">
+                        <p style="color: red; font-size: 13px; display: none;" id="Ntag">**Pls Enter Name!</p>
+                    </div>
+                    
+    
+                    <div class="pass">
+                        <label>Password</label><br>
+                        <input type="password" name="text2"  onblur="validatePass(document.form1.text2)" >
+                        <p style="color: red; font-size: 13px; display: block;" id="pwd">**Pls enter Password</p>
+                    </div>
+                    <div class="continue"><Button>Continue</Button></div>
+                </form>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+
+        function ValidateEmail(e){
+            prf=document.getElementById('ptag');
+            let data=e.value;
+            var validRegex = /^[a-z A-Z 0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z A-Z 0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+            if(data.match(validRegex)){
+                prf.innerText='Valid Sucessfuly!'
+                prf.style.color='green';
+
+            }
+            else{
+                prf.innerHTML='Invalid Email Address'
+                prf.style.color='Red';
+            }
+        }
+
+
+        function valid(event){
+            event.preventDefault();
+            let input=document.getElementsByTagName('input');
+            localStorage.setItem('email',input[0].value);
+            localStorage.setItem('name',input[1].value);
+            localStorage.setItem('password',input[2].value);
+
+
+            if (input[0].value=='' && input[1].value==''   ){
+                
+                window.location='Registration.html';
+                alert('Input fields Cannot be empty!')
+            }
+
+        
+            // else if(input[1].value.length>=3){
+            //     document.getElementById('Ntag').innerText='Valid only';
+            //     document.getElementById('Ntag').style.display='block';
+            //     document.getElementById('Ntag').style.color='green';
+                
+            // }
+
+            else if(prf.innerText == 'Valid Sucessfuly!' && document.getElementById("pwd").innerHTML == "**Password is validated successfully!!"){
+                window.location = 'Login.html';
+            }
+            
+        }
+        
+        function validatePass(e){
+           
+            console.log(e.value.length);
+
+            if(e.value == "") {  
+                document.getElementById("pwd").innerHTML = "**Fill the password please!";
+                document.getElementById("pwd").style.color='red';  
+                return false;  
+            }
+            if(e.value.length < 5) {  
+                document.getElementById("pwd").innerHTML = "**Password length must be atleast 5 characters"; 
+                return false;
+                window.location='Registration.html';
+
+
+            }
+            if(e.value.length >= 5){
+                document.getElementById("pwd").innerHTML = "**Password is validated successfully!!";  
+                document.getElementById("pwd").style.color='green';
+            }
+        }  
+
+        
+ 
+
+    </script>
+    
+</body>
+</html>

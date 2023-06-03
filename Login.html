@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="./images/adobe.png" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adobe ID</title>
+</head>
+<body onload="document.form1.text1.focus()" >
+    <div class="main">
+        <!-- <img src="./images/bg2.jpg" alt=""/> -->
+        <video autoplay muted loop id="myVideo">
+            <source src="./images/blue.mp4" type="video/mp4">
+          </video>
+          <div class="cont">
+            
+            <div class="login">
+                <h1>Sign in</h1>
+                <div class="new"><p>New user?<a href="Registration.html">Create an account</a></p></div>
+                <form  name="form1" onsubmit="valid(event)" autocomplete="off">
+                    <div class="email">
+                        <label>Email address</label><br>
+                        <input type="email" name="text1">
+                        
+                    </div>
+    
+                    <div class="pass">
+                        <label>Password</label><br>
+                        <input type="password" >
+                    </div>
+                    <div class="btn"><Button>Continue</Button></div>
+                </form>
+                
+                <span style="font-size: 20px;">Or</span>
+                <div class="buttons">
+                    <img src="./images/google.png" alt="google" height="20px" width="20px"/>
+                    <p>Continue with Google</p>
+                </div>
+            </div>
+
+            <div class="left">
+                <div><img src="./images/adobe-illustrator.png"> <p>Adobe</p></div>
+                <div class="cont">Sign in or create an account</div>
+            </div>
+            <div><p></p>Get Help signing in</div>
+          </div>
+       
+    </div>
+
+    <script>
+
+        
+
+        function valid(event){
+            event.preventDefault();
+            let input=document.getElementsByTagName('input');
+            let Lemail=input[0].value;
+            let Lpass = input[1].value;
+            let Remail=localStorage.getItem('email');
+            let Rpass=localStorage.getItem('password');
+
+            if(Lemail=='' && Lpass==''){
+                alert('Input fields can be empty!!!')
+            }
+
+            else if(Lemail== Remail && Lpass==Rpass){
+
+                window.location='index.html';
+
+            }
+            else{
+                alert('Pls Enter details correctly!')
+                
+
+            }
+            
+        }
+    </script>
+    
+</body>
+</html>
